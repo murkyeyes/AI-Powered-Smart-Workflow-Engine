@@ -108,9 +108,8 @@ class TaskServiceIntegrationTest {
         testTask.setWorkflow(workflow);
         testTask.setCurrentNode(sourceNode);
         testTask.setTitle("Spam Click Test Task");
-        testTask = taskRepository.save(testTask);
         testTask.setAssignedTo(user);
-        taskRepository.save(testTask);
+        testTask = taskRepository.save(testTask);
     }
 
     // Gotcha 1: Sử dụng @WithMockUser để Spring Security tự động thiết lập SecurityContext, tránh NullPointerException
