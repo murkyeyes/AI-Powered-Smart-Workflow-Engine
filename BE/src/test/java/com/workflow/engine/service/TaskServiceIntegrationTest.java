@@ -78,36 +78,37 @@ class TaskServiceIntegrationTest {
         User user = new User();
         user.setUsername("testadmin");
         user.setPasswordHash("hashed_pass");
-        userRepository.save(user);
+        user = userRepository.save(user);
 
         // 2. Tạo Workflow
         Workflow workflow = new Workflow();
         workflow.setName("Test Workflow");
-        workflowRepository.save(workflow);
+        workflow = workflowRepository.save(workflow);
 
         // 3. Tạo 2 Node (Source, Target)
         Node sourceNode = new Node();
         sourceNode.setWorkflow(workflow);
         sourceNode.setName("TODO");
-        nodeRepository.save(sourceNode);
+        sourceNode = nodeRepository.save(sourceNode);
 
         Node targetNode = new Node();
         targetNode.setWorkflow(workflow);
         targetNode.setName("DONE");
-        nodeRepository.save(targetNode);
+        targetNode = nodeRepository.save(targetNode);
 
         // 4. Tạo Edge nối TODO -> DONE (Có rule null để bỏ qua validation trong DB)
         testEdge = new Edge();
         testEdge.setWorkflow(workflow);
         testEdge.setSourceNode(sourceNode);
         testEdge.setTargetNode(targetNode);
-        edgeRepository.save(testEdge);
+        testEdge = edgeRepository.save(testEdge);
 
         // 5. Tạo 1 Task đang nằm ở TODO
         testTask = new Task();
         testTask.setWorkflow(workflow);
         testTask.setCurrentNode(sourceNode);
         testTask.setTitle("Spam Click Test Task");
+        testTask = taskRepository.save(testTask);
         testTask.setAssignedTo(user);
         taskRepository.save(testTask);
     }
