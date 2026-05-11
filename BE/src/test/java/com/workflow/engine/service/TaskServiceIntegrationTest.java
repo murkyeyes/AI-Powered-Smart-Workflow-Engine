@@ -37,7 +37,7 @@ import org.junit.jupiter.api.Disabled;
 
 @SpringBootTest
 @Testcontainers
-@Disabled("Lỗi tương thích giữa testcontainers-java 1.20 và HTTP API của Docker Desktop bản mới (4.30+). Cần chờ Testcontainers update lỗi Status 400 hoặc dùng H2 DB.")
+
 class TaskServiceIntegrationTest {
 
     // Gotcha 2: Sử dụng Testcontainers để dựng 1 DB PostgreSQL thật thay vì H2 (giải quyết lỗi JSONB)
