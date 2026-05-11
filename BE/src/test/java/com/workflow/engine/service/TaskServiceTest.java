@@ -17,6 +17,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -61,6 +62,7 @@ class TaskServiceTest {
         mockEdge.setId(UUID.randomUUID());
         mockEdge.setSourceNode(nodeA);
         mockEdge.setTargetNode(nodeB);
+        mockEdge.setRules(Map.of("min_coverage", 80.0)); // <--- THÊM RULES ĐỂ LỌT VÀO BLOCK RULE ENGINE
 
         mockRequest = new TaskTransitionRequest();
         mockRequest.setEdgeId(mockEdge.getId());
